@@ -1,3 +1,27 @@
+nav{
+    width: 80%;
+    margin: auto;
+    background-color: #A9A9A9;
+    padding: 10px 2px;
+}
+
+nav ul{
+    list-style: none;
+}
+
+nav ul li{
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a{
+    font-family: Verdana;
+    text-decoration: none;
+    color: #000;
+}
+nav ul li a:hover{
+    color: #fff;
+}
 main{
     width: 100%;
 }
@@ -12,8 +36,10 @@ section{
 }
 .div-25{
     width: 25%;
-    margin:auto;
+    margin: auto;
     height: auto;
+    background:whitesmoke;
+    padding: 0px 370px;
 }
 .div-100{
     width: 100%;
@@ -23,11 +49,16 @@ section{
 .cadastro h1{
     font-family: Arial;
     text-align: center;
+    background-color:gainsboro;
+    padding: 10px 0;
+
 }
 
-.cadastro input{
+.cadastro input,select{
+    text-align: center;
+    font-size: 17px;
     width: 100%;
-    margin:10px 0;
+    margin:5px 0;
     padding: 6px 0;
 }
 

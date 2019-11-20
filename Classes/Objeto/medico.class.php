@@ -17,6 +17,8 @@ class medico extends especialidades{
     private $media_salarial;
     private $crn;
     
+    private $verificaDados;
+    
     private $dados;
     protected $especialidade_medico;
     
@@ -80,8 +82,12 @@ class medico extends especialidades{
     function getDados() {
         return $this->dados;
     }
+    
+    function getVerificaDados() {
+        return $this->verificaDados;
+    }
 
-            
+                
     function setId_medico($id_medico) {
         $this->id_medico = (int) $id_medico;
     }
@@ -134,6 +140,7 @@ class medico extends especialidades{
         
         if($this->Tipo=="dados_medico"):
             while ($col = $this->Read->fetch(PDO::FETCH_ASSOC)):
+                $this->verificaDados = true;
                 $this->id_medico = $col['id'];
                 $this->setId_especialidade($col['cod']);
                 $this->nome = $col['nome'];
@@ -182,7 +189,7 @@ class medico extends especialidades{
                               . "<button type='submit'>Editar</button>"
                         . "</form>"
                     . "</div>"
-                    
+                  
                   . "<div class='botoes'>"
                         . "<form action='deletaDados.php' method='POST'> "
                               . "<input type='hidden' name='deletar' value='medico'>"

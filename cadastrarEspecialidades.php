@@ -8,7 +8,13 @@
     </head>
     <body>
         <header>
-            
+            <nav>
+                <ul>
+                    <li><a href="index.php">Inicio</a></li>
+                    <li><a href="cadastrarMedico.php"> Cadastrar Médico</a></li>
+                    <li><a href="cadastrarEspecialidades.php">Cadastrar Especialidades</a></li>
+                </ul>
+            </nav>
         </header>
         
         <main>

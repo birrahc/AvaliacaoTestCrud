@@ -8,6 +8,8 @@ $Cadastrar = new Insert();
 
 $update = new UpdateDados();
 
+$verificadados = new VerificaDados();
+
 if(isset($_POST['nome'])):
     $Medico->setNome($_POST['nome']);
 endif;
@@ -49,9 +51,43 @@ if(isset($_POST['id'])):
 endif;
 
 if($Medico->getId_medico() < 1):
-    $Cadastrar->CadastrarMedicos($Medico);
-    //var_dump($Cadastrar->CadastrarMedicos($Medico));
+    if(!$verificadados->verificaNome($Medico)):
+        
+        if(!$verificadados->verificaCpf($Medico)):
+            
+            if(!$verificadados->verificaCrm($Medico)):
+                
+                $Cadastrar->CadastrarMedicos($Medico);
+            
+                if($Cadastrar->getTrueFalse()==true):
+                   echo'<script type="text/javascript">
+                        alert("Cadastrado com Sucesso!");
+                        location.href="index.php";    
+                    </script>';
+                endif;
+                
+            else:
+              echo'<script type="text/javascript">
+                    alert("CRM ja existente!");
+                    location.href="cadastrarMedico.php";    
+                </script>';  
+            endif;
+            
+        else:
+            echo'<script type="text/javascript">
+                    alert("CPF ja existente!");
+                    location.href="cadastrarMedico.php";    
+                </script>';       
+        endif;
+        
+    else:
+        echo'<script type="text/javascript">
+                alert("Nome ja existente!");
+                location.href="cadastrarMedico.php";    
+            </script>';  
+    endif;
 elseif($Medico->getId_medico() >= 1):
     $update->updateMedico($Medico);
+    header("Location: index.php");
 endif;
 

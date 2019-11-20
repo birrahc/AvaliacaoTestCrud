@@ -5,7 +5,14 @@
  * @author Júnior
  */
 class Insert{
+    
+    private $trueFalse;
+    
+    function getTrueFalse() {
+        return $this->trueFalse;
+    }
 
+    
     public function inserirEspecialidades(especialidades $especialidades) {
          
         $Dados = ['cod'=>$especialidades->getId_especialidade(),
@@ -14,6 +21,7 @@ class Insert{
         
         $inseririEsp = new InsercaoBanco();
         $inseririEsp->ExecutInserir("especialidades", $Dados);
+        $this->trueFalse = $inseririEsp->getVerFal();
                 
         
     }
@@ -34,6 +42,9 @@ class Insert{
         
         $inserirMedico = new InsercaoBanco();
         $inserirMedico->ExecutInserir("medicos", $Dados);
+        $this->trueFalse = $inserirMedico->getVerFal();
         
     }
+    
+    
 }

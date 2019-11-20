@@ -12,7 +12,7 @@ id int auto_increment,
 nome varchar(45),
 nascimento date,
 cpf varchar(11) unique key,
-crm varchar(10) unique key,
+crm varchar(10),
 email varchar(35) unique key,
 telefone varchar(12),
 whatsapp varchar(12),
@@ -20,4 +20,3 @@ salario double,
 especialidade_medico int,
 primary key(id),
 foreign key(especialidade_medico) references especialidades(cod)
-);

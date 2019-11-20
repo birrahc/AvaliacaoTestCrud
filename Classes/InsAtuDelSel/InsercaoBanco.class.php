@@ -16,6 +16,8 @@ class InsercaoBanco extends Conexao {
     private $Dados;
     private $Result;
     
+    private $VerFal;
+    
     private $Mensagem;
     
     private $Inserir;
@@ -30,6 +32,11 @@ class InsercaoBanco extends Conexao {
         $this->Execute();
     }
     
+    function getVerFal() {
+        return $this->VerFal;
+    }
+
+        
     function getMensagem() {
         return $this->Mensagem;
     }
@@ -59,6 +66,7 @@ class InsercaoBanco extends Conexao {
         try {
             $this->Inserir->execute($this->Dados);
             $this->Result = $this->Conectar->lastInsertId();
+            $this->VerFal = true;
         } catch (Exception $ex) {
             $this->Mensagem=("Erro ao inserir dados! cod:{$ex->getCode()} Linha: {$ex->getLine()} arquivo:{$ex->getFile()}");
             

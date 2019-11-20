@@ -17,18 +17,24 @@ class especialidades extends Select{
     
     private $dadosEsp;
     
+    private $VerificaDadosEsp;
+    
     function __construct() {
         $this->dadosEsp = ['cod'=>'cod',
                            'especialidade'=>'especialidade'
                           ];
         
     }
-            function getId_especialidade() {
+    function getId_especialidade() {
         return $this->id_especialidade;
     }
 
     function getEspecialidade_nome() {
         return $this->especialidade_nome;
+    }
+    
+    function getVerificaDadosEsp() {
+        return $this->VerificaDadosEsp;
     }
 
     function setId_especialidade($id_especialidade) {
@@ -45,7 +51,15 @@ class especialidades extends Select{
     }
 
     public function Syntax() {
-        if($this->Tipo=="selectEsp"):
+        if($this->Tipo=="dados_Esp"):
+            
+            while($col = $this->Read->fetch(PDO::FETCH_ASSOC)):
+                $this->VerificaDadosEsp = true;
+                $this->id_especialidade = $col['cod'];
+                $this->especialidade_nome = $col['especialidade'];
+            endwhile;
+            
+        elseif($this->Tipo=="selectEsp"):
             
             while($col = $this->Read->fetch(PDO::FETCH_ASSOC)):
                 $this->id_especialidade = $col['cod'];
