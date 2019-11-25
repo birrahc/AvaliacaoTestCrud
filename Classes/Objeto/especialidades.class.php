@@ -69,24 +69,36 @@ class especialidades extends Select{
             
         elseif($this->Tipo=="lista_Especialidades"):
             
-            echo"<div class='list-esp'>Especialidades</div>"
-              . "<div class='botoes'></div>"
-              . "<div class='botoes'></div>";
+            echo"<div class='list-cod'>"
+                . "<h3> Cod</h3>"
+              . "</div>"
+                
+              . "<div class='list-esp'>"
+                . "<h3> Especialidades</h3>"
+              . "</div>"
+                
+              . "<div class='botoes div-acoes'>"
+                . "<h3>Ações</h3>"
+              . "</div>" 
+              . "<div style='clear:both;'></div>";
         
             while($col = $this->Read->fetch(PDO::FETCH_ASSOC)):
                 
                 $this->id_especialidade = $col['cod'];
                 $this->especialidade_nome = $col['especialidade'];
                 
-                echo"<div class='list-esp'>{{$this->getEspecialidade_nome()}</div>"
+                echo"<div class='list-cod'> <p> {$this->getId_especialidade()} </p> </div>"
+                  . "<div class='list-esp'> <p> {$this->getEspecialidade_nome()} </p> </div>"
                   . "<div class='botoes'>"
-                        . "<input type='hidden' name='editar_esp' value='{$this->getId_especialidade()}'>"
-                        . "<button type='submit'>Editar</button/>"
-                  . "</div>"
-                                
-                  . "<div class='botoes'>"
-                        . "<input type='hidden' name='excluir_esp' value='{$this->getId_especialidade()}'>"
-                        . "<button type='submit'>Excluir</button/>"
+                        . "<form>"
+                            . "<input type='hidden' name='editar_esp' value='{$this->getId_especialidade()}'>"
+                            . "<button type='submit'>Editar</button/>"
+                        . "</form>"
+                        
+                        . "<form>"
+                            . "<input type='hidden' name='excluir_esp' value='{$this->getId_especialidade()}'>"
+                            . "<button type='submit'>Excluir</button/>" 
+                        . "</form>"
                   . "</div>";
             endwhile;
             

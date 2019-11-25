@@ -25,4 +25,16 @@ class SelectDados {
         $Esp->especialidadeBanco($Termos2, "selectEsp");
     }
     
+    public function listaEspecialidades(especialidades $Esp){
+        $Termos2 = " where especialidade like '{$Esp->getEspecialidade_nome()}%' "
+                 . "ORDER BY especialidade ";
+        $Esp->especialidadeBanco($Termos2, "lista_Especialidades");
+    }
+    
+    public function dadosEsp(especialidades $esp){
+        $Termos2 = "where cod = {$esp->getId_especialidade()}";
+        $esp->especialidadeBanco($Termos, "dados_Esp");
+        
+    }
+    
 }

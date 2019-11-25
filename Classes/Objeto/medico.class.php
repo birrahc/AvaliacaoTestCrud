@@ -164,17 +164,19 @@ class medico extends especialidades{
                     . "<h3>Especialidade:</h3>"
               . "</div>"
                 
-              . "<div class='botoes'>"
+              . "<div class='botoes div-acoes'>"
+                . "<h3>Ações</h3>"
+              . "</div>" 
+              . "<div style='padding:1px 0; font-family:Arial; text-align:center;' class='botoes'>"
+                
               . "</div>"
                 
-              . "<div class='botoes'>"
-              . "</div>"
-                
+              
               . "<div style='clear:both;'></div>";
         
             while ($col = $this->Read->fetch(PDO::FETCH_ASSOC)):
                 $this->id_medico = $col['id'];
-                
+                $this->crn = $col['crm'];
                 echo"<div class='lista-dados'>"
                     . "<p>" . $col['nome']. "</p>"
                   . "</div>"
@@ -188,12 +190,11 @@ class medico extends especialidades{
                               . "<input type='hidden' name='medico' value={$this->getId_medico()}>"
                               . "<button type='submit'>Editar</button>"
                         . "</form>"
-                    . "</div>"
-                  
-                  . "<div class='botoes'>"
-                        . "<form action='deletaDados.php' method='POST'> "
+                    
+                        . "<form name='deleteMed' action='deletaDados.php' method='POST' onsubmit='return validaCamposForm();'> "
                               . "<input type='hidden' name='deletar' value='medico'>"
                               . "<input type='hidden' name='deleta_medico' value={$this->getId_medico()}>"
+                              . "<input type='hidden' name='crm_med' value='{$this->getCrn()}'>"
                               . "<button type='submit'>Excluir</button>"
                         . "</form>"
                   . "</div>"

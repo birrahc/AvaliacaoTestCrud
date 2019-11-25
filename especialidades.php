@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<?php   
+<?php
     require('./Classes/config.inc.php');
-    $Medico = new medico();
-    $dadosMedico = new SelectDados();
-    
-    $Medico->setId_medico("");
+    $esp = new especialidades();
+    $Seleciona = new SelectDados();
 ?>
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="Classes/css/estilo.css">
-        <script type="text/javascript" src="js/validadCampos.js"></script>
         <title></title>
     </head>
     <body>
@@ -24,11 +21,12 @@
                 </ul>
             </nav>
         </header>
+        
         <main>
             <section>
                 <div class="div-70">
                     <?php
-                        $dadosMedico->listaMedicos($Medico);
+                        $Seleciona->listaEspecialidades($esp);
                     ?>  
                 </div>
             </section>
