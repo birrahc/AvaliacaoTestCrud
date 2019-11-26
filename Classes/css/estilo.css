@@ -29,8 +29,13 @@ section{
     width: 100%;
     height: auto;
 }
+
+footer{
+    margin-bottom: 0px;
+}
 .div-70{
     width: 70%;
+    height: 80%;
     margin: auto;
     height: auto;
 }

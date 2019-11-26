@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<?php
-    require('./Classes/config.inc.php');
-    $esp = new especialidades();
-    $Seleciona = new SelectDados();
-?>
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">

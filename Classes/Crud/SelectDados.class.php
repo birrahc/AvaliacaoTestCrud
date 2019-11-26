@@ -33,7 +33,7 @@ class SelectDados {
     
     public function dadosEsp(especialidades $esp){
         $Termos2 = "where cod = {$esp->getId_especialidade()}";
-        $esp->especialidadeBanco($Termos, "dados_Esp");
+        $esp->especialidadeBanco($Termos2, "dados_Esp");
         
     }
     

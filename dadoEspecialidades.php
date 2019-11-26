@@ -35,7 +35,7 @@ elseif($Especialidade->getId_especialidade() >= 1):
     
         echo'<script type="text/javascript">
                 alert("Dados Atualizados com Sucesso!");
-                location.href="cadastrarEspecialidades.php";    
+                location.href="especialidades.php";    
             </script>';
     else:
       echo'<script type="text/javascript">

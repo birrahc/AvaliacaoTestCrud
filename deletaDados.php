@@ -32,7 +32,16 @@ if(isset($_POST['deletar'])):
             endif;
             
         endif;
-        
+    elseif($_POST['deletar']=="especialidade"):
+        if(isset($_POST['excluir_esp'])):
+            $Eespecialidade->setId_especialidade($_POST['excluir_esp']);
+            $Delete->deleteEspecialidades($Eespecialidade);
+            echo'<script type="text/javascript">
+                    alert("Deletado com Sucesso!");
+                    location.href="especialidades.php";    
+                </script>';
+        endif;
     endif;
+    
 endif;
 

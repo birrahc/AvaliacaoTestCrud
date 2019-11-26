@@ -6,6 +6,7 @@ $selecionar = new SelectDados();
 
 if(isset($_POST['cod'])):
     $esp->setId_especialidade($_POST['cod']); 
+    $selecionar->dadosEsp($esp);
 endif;
 
 ?>
@@ -33,8 +34,8 @@ endif;
                 <div class="div-25 cadastro">
                     <h1> Cadastro de Especialidades </h1>
                     <form name="formEsp" action="dadoEspecialidades.php" method="POST" onsubmit="return validaCamposForm();">
-                    <input type="hidden" name="cod">
-                    <input type="text" name="especialidade" placeholder="Especialidade">
+                        <input type="hidden" name="cod" value="<?php echo $esp->getId_especialidade() ?>">
+                        <input type="text" name="especialidade" placeholder="Especialidade" value="<?php echo $esp->getEspecialidade_nome() ?>">
                     <button type="submit">Cadastrar</button>
                     </form>
                 </div>
