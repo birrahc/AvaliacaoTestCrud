@@ -9,8 +9,8 @@ class VerificaDados {
     public function verificaNome(medico $verifica){
         $Termos = "inner join especialidades e on especialidade_medico = e.cod"
                  ." WHERE nome = '{$verifica->getNome()}'";
-        $verifica->medicoBanco($Termos, "dados_medico");
-        return $verifica->getVerificaDados();
+        $verifica->medicoBanco($Termos, "VerificaDados");
+        //var_dump($verifica);
     }
     
     public function verificaCpf(medico $verifica){
@@ -38,6 +38,24 @@ class VerificaDados {
         $Termos = " WHERE especialidade = '{$Esp->getEspecialidade_nome()}'";
         $Esp->especialidadeBanco($Termos, "dados_Esp");
         return $Esp->getVerificaDadosEsp();
+    }
+    
+    public function VerficaCampoCpf(medico $cpf){
+        $Termos = "inner join especialidades e on especialidade_medico = e.cod"
+                 ." WHERE cpf = ".$cpf->getCpf();
+        $cpf->medicoBanco($Termos, "VerificaDados");
+    }
+    
+    public function VerificaEmailCadastrado(medico $email){
+        $Termos = "inner join especialidades e on especialidade_medico = e.cod"
+                 ." WHERE email ='{$email->getEmail()}'";
+        $email->medicoBanco($Termos, "VerificaDados");
+    }
+    
+    public function VerificaCrmCadastrado(medico $crm){
+        $Termos = "inner join especialidades e on especialidade_medico = e.cod"
+                 ." WHERE crm ='{$crm->getCrn()}'";
+        $crm->medicoBanco($Termos, "VerificaDados");
     }
     
 }

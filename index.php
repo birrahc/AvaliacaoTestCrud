@@ -31,8 +31,8 @@
                         $dadosMedico->listaMedicos($Medico);
                     ?>  
                 </div>
+                <div style="clear: both;"></div>
             </section>
         </main>
-       
     </body>
 </html>

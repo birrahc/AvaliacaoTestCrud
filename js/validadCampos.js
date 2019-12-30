@@ -104,9 +104,7 @@ function idade(nasc) {
     return anos;
 }
 
-if (idade() <= 20) {
-    console.log("Voce tem 35 anos");
-} else { console.log("Voce nao  tem  idade maior que 35 anos"); }
+
 
 function verNasc(nascimento){
     if(nascimento ==""){

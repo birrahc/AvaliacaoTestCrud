@@ -7,7 +7,7 @@ $Atualizar = new UpdateDados();
 $verificaDados = new VerificaDados();
 
 if(isset($_POST['especialidade'])):
-    $Especialidade->setEspecialidade_nome($_POST['especialidade']);
+    $Especialidade->setEspecialidade_nome(ucwords($_POST['especialidade']));
 endif;
 
 if(isset($_POST['cod'])):

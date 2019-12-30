@@ -59,7 +59,7 @@ footer{
 
 }
 
-.cadastro input,select{
+.cadastro input,select {
     text-align: center;
     font-size: 17px;
     width: 100%;
@@ -68,10 +68,16 @@ footer{
 }
 
 .cadastro select{
-    width: 101.5%;
+    width: 101.5% !important;
     margin:10px 0;
     padding: 6px 0;
-    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center !important;
+}
+.select-center{
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
 main section .lista-dados{
@@ -127,4 +133,118 @@ main section .list-cod{
 
 .div-acoes h3{
     margin: 0 !important;
+}
+
+input.error, select.error{
+    border: solid 1px red;
+}
+
+
+label.error{
+    font-size: 10px;
+    margin: 0 auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:red;
+   
+}
+
+.captalize{
+    text-transform: capitalize;
+}
+.form-1{
+    border: 1px solid black;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+.form-1 input{
+    width: 80% !important;
+    border-radius: 5px !important;
+    border: 1px solid black;
+}
+
+.form-1 input[type="submit"]{
+    font-size: 14px !important;
+    width: 18% !important;
+    padding: 7px 2px !important;
+    background-color: white;
+    border-radius: 5px !important;
+    border: 1px solid black;
+    margin-left: 0px;
+}
+
+.form-2{
+    border: 1px solid black;
+    margin: 20px 0;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+.form-2 input, select{
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.form-2 input[type="submit"]{
+    font-size: 14px !important;
+    width: 100.5% !important;
+    padding: 7px 2px !important;
+    background-color: white;
+    border-radius: 5px !important;
+    border: 1px solid black;
+}
+
+.form-1 input[type="submit"]:hover, .form-2 input[type="submit"]:hover{
+    background-color: #A9A9A9;
+    color:white;
+}
+
+.corpo{
+    display: none;
+}
+
+.carregando{
+    position: fixed;
+    left: 0;
+    top:0;
+    width:100%;
+    height: 100%;
+    background: url(../..//img/loadingUpdate.gif) 50% 50% no-repeat;
+}
+.processo{
+   float: right;
+    position: relative;
+    top: -158px;
+    margin-right: -100px;
+    width: 40px;
+
+}
+
+.processamento{
+    background: none;
+    width: 100%;
+    height: 40px;
+    margin: 5px 0;
+}
+
+.loading-image{
+     background: url(../..//img/loadingUpdate.gif) 50% 50% no-repeat;
+}
+
+.checkOk{
+    background: url(../..//img/checkOk-maior.png) 50% 50% no-repeat;
+    background-size: 100%;
+}
+
+.checkOkError{
+    background: url(../..//img/checkError.png) 50% 50% no-repeat;
+    background-size: 100%;
+}
+
+.processo-Campo{
+    width: 230px;
+    height: 200px;
+    float: right;
+    position: relative;
+    top: -456px;
+    margin-right: 326px;
+    background-size: 50%;
 }

@@ -42,7 +42,8 @@ class Insert{
         
         $inserirMedico = new InsercaoBanco();
         $inserirMedico->ExecutInserir("medicos", $Dados);
-        $this->trueFalse = $inserirMedico->getVerFal();
+        //$this->trueFalse = $inserirMedico->getVerFal();
+       // var_dump($inserirMedico);
         
     }
     

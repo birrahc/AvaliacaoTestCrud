@@ -17,6 +17,8 @@ class medico extends especialidades{
     private $media_salarial;
     private $crn;
     
+    private $data;
+    
     private $verificaDados;
     
     private $dados;
@@ -94,7 +96,7 @@ class medico extends especialidades{
 
     
     function setNome($nome) {
-        $this->nome = $nome;
+        $this->nome = ucwords($nome);
     }
 
     function setEmail($email) {
@@ -102,7 +104,8 @@ class medico extends especialidades{
     }
 
     function setCpf($cpf) {
-        $this->cpf = $cpf;
+        $limpa = str_replace(".", "", $cpf);
+        $this->cpf = str_replace("-","", $limpa);
     }
 
     function setNascimento($nascimento) {
@@ -118,7 +121,8 @@ class medico extends especialidades{
     }
 
     function setMedia_salarial($media_salarial) {
-        $this->media_salarial = (doubleval($media_salarial));
+        $limpa = str_replace(".", "", $media_salarial);
+        $this->media_salarial = (doubleval($limpa));
     }
 
     function setCrn($crn) {
@@ -129,6 +133,11 @@ class medico extends especialidades{
         $this->especialidade_medico =(int) $especialidade_medico;
     }
     
+    function getData() {
+        return $this->data;
+    }
+
+        
     //public function medicoBanco(medico $medico)
     public function medicoBanco($Termos, $Tipo){
         
@@ -137,8 +146,19 @@ class medico extends especialidades{
     }
 
     public function Syntax() {
-        
-        if($this->Tipo=="dados_medico"):
+        if($this->Tipo == "VerificaDados"):
+            
+            $col = $this->Read->fetch(PDO::FETCH_ASSOC);
+            if($this->Read->rowCount()>0):
+                $this->data= $this->Read->rowCount();
+            
+            else:
+                $this->data=0;
+            endif;
+            
+            echo $this->getData();
+       
+        elseif($this->Tipo=="dados_medico"):
             while ($col = $this->Read->fetch(PDO::FETCH_ASSOC)):
                 $this->verificaDados = true;
                 $this->id_medico = $col['id'];
@@ -186,7 +206,7 @@ class medico extends especialidades{
                   . "</div>"
                         
                   . "<div class='botoes'>"
-                        . "<form action='cadastrarMedico.php' method='POST'> "
+                        . "<form action='atualizaMedico.php' method='POST'> "
                               . "<input type='hidden' name='medico' value={$this->getId_medico()}>"
                               . "<button type='submit'>Editar</button>"
                         . "</form>"
