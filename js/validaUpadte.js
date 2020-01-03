@@ -303,7 +303,6 @@ jQuery.validator.addMethod("verificaCrm", function (value, element) {
    }, "crm já cadastrado!");
    
    jQuery.validator.addMethod("verificaIdade", function (value, element) {
-                //$("#nascimento").mask('00/00/0000',{placeholder: "__/__/____"});
                 var data = new Date();
                 value = value.split("/");
                 nascimento = value;
@@ -316,12 +315,12 @@ jQuery.validator.addMethod("verificaCrm", function (value, element) {
                     }
                 }
 
-                if (anos <= 22) {
+                if (anos < 20) {
                     return false;
                 }
                 return true;
             },
-                "A idade não pode ser menor que 22 anos ");
+                "A idade não pode ser menor que 20 anos ");
 
 
 $(document).ready(init);

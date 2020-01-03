@@ -65,7 +65,7 @@ function init() {
             nome: { required: true, minlength:9 },
             cpf: { required: true, verificaCPF: true },
             crm:{verificaCrm:true},
-            nascimento: { required: true, verificaIdade: true,},
+            nascimento: { required: true, minlength:10, maxlength:11, verificaIdade: true,},
             email:{ email: true, verificaEmail: true},
             especialidade_medico:{required: true},
             salario:{required: true}
@@ -74,7 +74,7 @@ function init() {
         messages: {
             nome: { required: "Campo Nome Obrigatório ", minlength:"O Campo Nome deve ter no minimo 9 caractres" },
             cpf: { required: "Campo CPF Obrigatório" },
-            nascimento: { required: "Campo Nascimento Obrigatório" },
+            nascimento: { required: "Campo Nascimento Obrigatório", minlength:"Digite o campo corretamente", maxlength:"Digite o campo corretamente" },
             email:{ email: "por favor preencha um email válido!"},
             especialidade_medico:{required:" Preencha o campo Especialidade"},
             salario:{ required: "Por favor preencha o campo Salario"}
@@ -328,12 +328,12 @@ function init() {
                     }
                 }
 
-                if (anos <= 22) {
+                if (anos < 20) {
                     return false;
                 }
                 return true;
             },
-                "A idade não pode ser menor que 22 anos ");
+                "A idade não pode ser menor que 20 anos ");
             
             jQuery.validator.addMethod("verificaEmail", function (value, element) {
                 email= value;
