@@ -17,15 +17,9 @@ endif;
 if($Especialidade->getId_especialidade() < 1):
     if(!$verificaDados->verificaEspecialidade($Especialidade)):
         $cadastrar->inserirEspecialidades($Especialidade);
-        echo'<script type="text/javascript">
-                alert("Cadastrado com Sucesso!");
-                location.href="cadastrarEspecialidades.php";    
-            </script>';
+        echo 1;
     else:
-      echo'<script type="text/javascript">
-                alert("Especialidade ja Cadastrada!");
-                location.href="cadastrarEspecialidades.php";    
-            </script>';  
+      echo 0;  
     endif;
     
 elseif($Especialidade->getId_especialidade() >= 1):
@@ -33,14 +27,8 @@ elseif($Especialidade->getId_especialidade() >= 1):
         
         $Atualizar->updateEspecialidade($Especialidade);
     
-        echo'<script type="text/javascript">
-                alert("Dados Atualizados com Sucesso!");
-                location.href="especialidades.php";    
-            </script>';
+        echo 1;
     else:
-      echo'<script type="text/javascript">
-                alert("Especialidade ja Cadastrada!");
-                location.href="cadastrarEspecialidades.php";    
-            </script>';  
+      echo 0;  
     endif;
 endif;

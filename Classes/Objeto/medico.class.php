@@ -122,7 +122,8 @@ class medico extends especialidades{
 
     function setMedia_salarial($media_salarial) {
         $limpa = str_replace(".", "", $media_salarial);
-        $this->media_salarial = (doubleval($limpa));
+        $virgula = str_replace(",", ".", $limpa);
+        $this->media_salarial = (doubleval($virgula));
     }
 
     function setCrn($crn) {
@@ -176,11 +177,11 @@ class medico extends especialidades{
             endwhile;
             
         elseif($this->Tipo=="lista_medico"):
-            echo"<div class='lista-dados'>"
+            echo"<div class='lista-dados color-withsmoke'>"
                     . "<h3>Médico:</h3>"
               . "</div>"
                 
-              . "<div class='lista-dados'>"
+              . "<div class='lista-dados color-withsmoke'>"
                     . "<h3>Especialidade:</h3>"
               . "</div>"
                 
@@ -206,16 +207,9 @@ class medico extends especialidades{
                   . "</div>"
                         
                   . "<div class='botoes'>"
-                        . "<form action='atualizaMedico.php' method='POST'> "
-                              . "<input type='hidden' name='medico' value={$this->getId_medico()}>"
-                              . "<button type='submit'>Editar</button>"
-                        . "</form>"
-                    
-                        . "<form name='deleteMed' action='deletaDados.php' method='POST' onsubmit='return validaCamposForm();'> "
-                              . "<input type='hidden' name='deletar' value='medico'>"
-                              . "<input type='hidden' name='deleta_medico' value={$this->getId_medico()}>"
-                              . "<input type='hidden' name='crm_med' value='{$this->getCrn()}'>"
-                              . "<button type='submit'>Excluir</button>"
+                        . "<form action='dadosCompleto.php' method='POST'> "
+                              . "<input type='hidden' name='id_medico' value={$this->getId_medico()}>"
+                              . "<button type='submit'>Detalhe</button>"
                         . "</form>"
                   . "</div>"
                  . "<div style='clear:both;'></div>";

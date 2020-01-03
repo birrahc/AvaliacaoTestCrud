@@ -58,4 +58,9 @@ class VerificaDados {
         $crm->medicoBanco($Termos, "VerificaDados");
     }
     
+     public function VerificaEspecialidadeBanco(especialidades $esp){
+        $Termos = " WHERE especialidade ='{$esp->getEspecialidade_nome()}'";
+        $esp->especialidadeBanco($Termos, "VerificaDado");
+    }
+    
 }

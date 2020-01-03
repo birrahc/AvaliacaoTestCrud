@@ -9,8 +9,8 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="Classes/css/estilo.css">
-        <script type="text/javascript" src="js/validadCampos.js"></script>
+        <link rel="stylesheet" href="css/estilo.css">
+       
         <title></title>
     </head>
     <body>
@@ -26,7 +26,7 @@
         </header>
         <main>
             <section>
-                <div class="div-70">
+                <div class="div-70" style="box-shadow: 5px 10px 18px #D3D3D3;">
                     <?php
                         $dadosMedico->listaMedicos($Medico);
                     ?>  

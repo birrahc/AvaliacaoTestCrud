@@ -35,10 +35,24 @@ footer{
 }
 .div-70{
     width: 70%;
-    height: 80%;
+    height: 500px;
     margin: auto;
-    height: auto;
+    overflow: auto;
 }
+
+.bc-whtsm{
+    background-color: whitesmoke;
+}
+
+.bc-wht{
+    background-color: white;
+}
+.div-98{
+    width: 98%;
+    height: auto;
+    margin: auto;
+}
+
 .div-25{
     width: 25%;
     margin: auto;
@@ -74,6 +88,7 @@ footer{
     margin-left: auto;
     margin-right: auto;
     text-align: center !important;
+    padding-left: 100px;
 }
 .select-center{
   padding-left: 15%;
@@ -83,9 +98,9 @@ footer{
 main section .lista-dados{
     width: 40%;
     float: left;
-    background-color: whitesmoke;
     margin: 4px 1px; 
     padding: 0 10px;
+    border: solid 2px whitesmoke;
 }
 main section .lista-dados h3, p, .list-esp h3,p, .list-cod h3, p{
     font-family: Arial;
@@ -96,7 +111,7 @@ main section .lista-dados h3, p, .list-esp h3,p, .list-cod h3, p{
 main section .list-esp{
     width: 60%;
     float: left;
-    background-color: whitesmoke;
+    border: solid 2px whitesmoke;
     margin: 4px 1px; 
     padding: 0 10px;
     
@@ -105,22 +120,30 @@ main section .list-esp{
 main section .list-cod{
     width: 20%;
     float: left;
-    background-color: whitesmoke;
+    border: solid 2px whitesmoke;
     margin: 4px 1px; 
     padding: 0 10px;
 }
 .botoes{
-    width: 15%;
+    width: 14%;
     float: left;
-    padding: 5px 1px;
+    padding: 4px 1px;
 }
 
 .botoes button{
+    font-size: 16px;
     margin:0;
     width: 100%;
     height: 100%;
-    padding: 1px 0;
+    padding: 16px 0;
+    background: none;
+    border: solid 2px whitesmoke;
    
+}
+
+.botoes button:hover{
+    background-color: #A9A9A9;
+    color: white;
 }
 
 .div-acoes{
@@ -129,6 +152,8 @@ main section .list-cod{
     background-color: #D3D3D3;
     margin:4px 1px;
     padding: 18px 0;
+    width: 127px;
+    border: solid 2px #D3D3D3;
 }
 
 .div-acoes h3{
@@ -207,7 +232,7 @@ label.error{
     top:0;
     width:100%;
     height: 100%;
-    background: url(../..//img/loadingUpdate.gif) 50% 50% no-repeat;
+    background: url(../img/loadingUpdate.gif) 50% 50% no-repeat;
 }
 .processo{
    float: right;
@@ -226,16 +251,16 @@ label.error{
 }
 
 .loading-image{
-     background: url(../..//img/loadingUpdate.gif) 50% 50% no-repeat;
+     background: url(../img/loadingUpdate.gif) 50% 50% no-repeat;
 }
 
 .checkOk{
-    background: url(../..//img/checkOk-maior.png) 50% 50% no-repeat;
+    background: url(../img/checkOk-maior.png) 50% 50% no-repeat;
     background-size: 100%;
 }
 
 .checkOkError{
-    background: url(../..//img/checkError.png) 50% 50% no-repeat;
+    background: url(../img/checkError.png) 50% 50% no-repeat;
     background-size: 100%;
 }
 
@@ -247,4 +272,89 @@ label.error{
     top: -456px;
     margin-right: 326px;
     background-size: 50%;
+}
+
+.d-pessoais{
+    font-family: Arial;
+    background-color: whitesmoke;
+    margin: 5px 1.5%;
+    width: 25%;
+    float: left;
+    height: 65px;
+    padding: 2px 0;
+    border-radius: 0 50px 0 50px;
+}
+.d-pessoais h4{
+    text-align: center;
+    width: 50%;
+    margin: 0 5px;
+    padding: 5px 5px;
+    background-color: white;
+    border-radius: 0 50px 0 0;
+    
+}
+
+.dadosPessoais{
+    width: 80%;
+    margin-left: 10%;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 0 0 0 50px;
+    height: 20px;
+}
+.dadosPessoais p{
+    margin: 2px 0;
+    text-align: center;
+}
+
+.h-center h1,h2,h3,h4,h5{
+    font-family: Arial;
+    text-align: center;
+}
+
+.buttons{
+    width:45%;
+    margin: 30px 2.2%;
+    float: left;
+    border:solid 2px #D3D3D3;
+    padding: 10px 0;
+}
+
+.buttons button{
+    font-size: 18px;
+    width: 80%;
+    margin-left: 10%;
+    padding: 10px 0;
+    background-color:white;
+    border-radius: 10px;
+}
+.buttons button:hover{
+    background-color: whitesmoke;
+    
+}
+
+.color-withsmoke{
+    background-color: whitesmoke;
+}
+
+.edit-del{
+    width: 30%;
+    float: left;
+    border:solid 2px #A9A9A9;
+    margin: 15px 1.45% !important;
+    padding: 5px 0;
+}
+
+.edit-del button{
+    width: 90%;
+    font-size: 16px;
+    margin-left: 5%;
+    padding: 5px 0;
+    border: solid 1px #D3D3D3;
+    background-color: white;
+    border-radius: 10px;
+}
+.edit-del button:hover{
+    background-color: #D3D3D3;
+    color: white;
 }

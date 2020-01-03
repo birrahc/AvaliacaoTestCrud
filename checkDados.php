@@ -4,6 +4,8 @@ require('./Classes/config.inc.php');
 
 $dados = new medico();
 
+$dadosEsp = new especialidades();
+
 $consulta = new VerificaDados();
 
 if(isset($_GET['cpf'])):
@@ -24,6 +26,12 @@ elseif(isset($_GET['nome'])):
 elseif(isset($_GET['crm'])):
     $dados->setCrn($_GET['crm']);
     $consulta->VerificaCrmCadastrado($dados);
+    
+elseif(isset($_GET['especialidade'])):
+   $dadosEsp->setEspecialidade_nome($_GET['especialidade']);
+    $consulta->VerificaEspecialidadeBanco($dadosEsp);
 endif;
 
+
+    
 

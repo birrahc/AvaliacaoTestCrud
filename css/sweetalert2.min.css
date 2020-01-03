@@ -11,6 +11,7 @@
     box-shadow:0 0 .625em #d9d9d9
 }
 .swal2-popup.swal2-toast .swal2-header{
+    font-family: Arial, Helvetica, sans-serif;
     -webkit-box-orient:horizontal;
     -webkit-box-direction:normal;
     flex-direction:row
@@ -292,6 +293,7 @@
         overflow-y:hidden
     }
     .swal2-header{
+        font-family: Arial;
         display:-webkit-box;display:flex;
         -webkit-box-orient:vertical;
         -webkit-box-direction:normal;
@@ -300,6 +302,7 @@
         align-items:center
     }
     .swal2-title{
+       font-family: Arial;
         position:relative;
         max-width:100%;margin:0 0 .4em;padding:0;
         color:#595959;
@@ -446,6 +449,7 @@
         border:0
     }
     .swal2-content{
+        font-family: Arial;
         z-index:1;
         -webkit-box-pack:center;
         justify-content:center;

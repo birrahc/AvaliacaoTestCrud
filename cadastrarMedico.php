@@ -20,9 +20,8 @@ endif;
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="Classes/css/estilo.css">
-        <link rel="stylesheet" href="Classes/css/sweetalert2.min.css">
-        <link rel="stylesheet" href="Classes/css/loading.css">
+        <link rel="stylesheet" href="css/estilo.css">
+        <link rel="stylesheet" href="css/sweetalert2.min.css">
         <script src="js/jquery-3.4.1.min.js" ></script>
         <script src="js/jquery.validate.min.js"></script>
         <script src="js/sweetalert2.min.js"></script>
@@ -67,7 +66,7 @@ endif;
                             <label for="email" generated="true" class="error"></label>
                             <input type="email" name="email" placeholder="E-Mail" value="<?php echo $Medico->getEmail() ?>">
                             <input type="text" name="telefone" id="telefone" placeholder="Telefone" value="<?php echo $Medico->getTelefone() ?>">
-                            <input type="text" name="watshapp" id="whatswap" placeholder="Watshapp" value="<?php echo $Medico->getWhatswapp() ?>">
+                            <input type="text" name="watshapp" id="whatswap" placeholder="WatsAapp" value="<?php echo $Medico->getWhatswapp() ?>">
                              <label for="crm" generated="true" class="error"></label>
                             <input type="text" name="crm" placeholder="CRM" value="<?php echo $Medico->getCrn() ?>">
                              <label for="salario" generated="true" class="error"></label>

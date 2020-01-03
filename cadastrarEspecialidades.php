@@ -4,20 +4,31 @@ require('./Classes/config.inc.php');
 $esp = new especialidades();
 $selecionar = new SelectDados();
 
+$pagina ="Cadastro de Especialidades";
+$botao ="Cadastrar";
+
 if(isset($_POST['cod'])):
     $esp->setId_especialidade($_POST['cod']); 
     $selecionar->dadosEsp($esp);
+    $pagina ="Editar Especialidade";
+    $botao="Editar";
 endif;
 
 ?>
 <html lang="pt-br">
    <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="Classes/css/estilo.css">
-        <script type="text/javascript" src="js/validadCampos.js"></script>
+        <link rel="stylesheet" href="css/estilo.css">
+        <link rel="stylesheet" href="css/sweetalert2.min.css">
+        <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="js/sweetalert2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mask.min.js"></script>
+        <script type="text/javascript" src="js/validacao.js"></script>
         <title></title>
     </head>
     <body>
+        <div class="carregando" id="carregando"></div>
         <header>
             <nav>
                 <ul>
@@ -32,11 +43,12 @@ endif;
         <main>
             <section>
                 <div class="div-25 cadastro">
-                    <h1> Cadastro de Especialidades </h1>
-                    <form name="formEsp" action="dadoEspecialidades.php" method="POST" onsubmit="return validaCamposForm();">
+                    <h1><?php echo $pagina ?> </h1>
+                    <form id="formEsp" name="formEsp" action="dadoEspecialidades.php" method="POST">
                         <input type="hidden" name="cod" value="<?php echo $esp->getId_especialidade() ?>">
-                        <input type="text" name="especialidade" placeholder="Especialidade" value="<?php echo $esp->getEspecialidade_nome() ?>">
-                    <button type="submit">Cadastrar</button>
+                        <label for="especialidade" generated="true" class="error"></label>
+                        <input type="text" name="especialidade" id="especialidade" placeholder="Especialidade" value="<?php echo $esp->getEspecialidade_nome() ?>">
+                        <input type="submit" value="<?php echo $botao ?>">
                     </form>
                 </div>
             </section>

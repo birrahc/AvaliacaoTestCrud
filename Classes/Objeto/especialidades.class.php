@@ -19,6 +19,8 @@ class especialidades extends Select{
     
     private $VerificaDadosEsp;
     
+    private $data;
+    
     function __construct() {
         $this->dadosEsp = ['cod'=>'cod',
                            'especialidade'=>'especialidade'
@@ -36,7 +38,12 @@ class especialidades extends Select{
     function getVerificaDadosEsp() {
         return $this->VerificaDadosEsp;
     }
+    
+    function getData() {
+        return $this->data;
+    }
 
+    
     function setId_especialidade($id_especialidade) {
         $this->id_especialidade = $id_especialidade;
     }
@@ -58,6 +65,18 @@ class especialidades extends Select{
                 $this->id_especialidade = $col['cod'];
                 $this->especialidade_nome = $col['especialidade'];
             endwhile;
+    
+    elseif($this->Tipo == "VerificaDado"):
+            
+            $col = $this->Read->fetch(PDO::FETCH_ASSOC);
+            if($this->Read->rowCount()>0):
+                $this->data= $this->Read->rowCount();
+            
+            else:
+                $this->data=0;
+            endif;
+            
+            echo $this->getData();
             
         elseif($this->Tipo=="selectEsp"):
             
@@ -69,11 +88,11 @@ class especialidades extends Select{
             
         elseif($this->Tipo=="lista_Especialidades"):
             
-            echo"<div class='list-cod'>"
+            echo"<div class='list-cod color-withsmoke'>"
                 . "<h3> Cod</h3>"
               . "</div>"
                 
-              . "<div class='list-esp'>"
+              . "<div class='list-esp color-withsmoke'>"
                 . "<h3> Especialidades</h3>"
               . "</div>"
                 
@@ -90,15 +109,9 @@ class especialidades extends Select{
                 echo"<div class='list-cod'> <p> {$this->getId_especialidade()} </p> </div>"
                   . "<div class='list-esp'> <p> {$this->getEspecialidade_nome()} </p> </div>"
                   . "<div class='botoes'>"
-                        . "<form action='cadastrarEspecialidades.php' method='POST'>"
-                            . "<input type='hidden' name='cod' value='{$this->getId_especialidade()}'>"
-                            . "<button type='submit'>Editar</button/>"
-                        . "</form>"
-                        
-                        . "<form action='deletaDados.php' method='POST'>"
-                            . "<input type='hidden' name='deletar' value='especialidade'>"
-                            . "<input type='hidden' name='excluir_esp' value='{$this->getId_especialidade()}'>"
-                            . "<button type='submit'>Excluir</button/>" 
+                        . "<form action='especialidades.php' method='POST'>"
+                            . "<input type='hidden' name='espEsp' value='{$this->getId_especialidade()}'>"
+                            . "<button type='submit'>Edit/Del</button/>"
                         . "</form>"
                   . "</div>";
             endwhile;

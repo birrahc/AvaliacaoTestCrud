@@ -14,21 +14,15 @@ if(isset($_POST['deletar'])):
             $Medico->setCrn($_POST['crm_med']);
         
             if(empty($Medico->getCrn())|| $Medico == null):
-                echo"campo nao vazio";
+               // echo"campo nao vazio";
             
                 if(isset($_POST['deleta_medico'])):
                     $Medico->setId_medico($_POST['deleta_medico']);
                     $Delete->deleteMedico($Medico);
-                    echo'<script type="text/javascript">
-                            alert("Deletado com Sucesso!");
-                            location.href="index.php";    
-                    </script>';
+                    echo 1; //alert("Deletado com Sucesso!");
                 endif;
             else:
-                echo'<script type="text/javascript">
-                        alert("Medicos Com CRM cadastrado nao podem ser excluidos!");
-                        location.href="index.php";    
-                    </script>';
+                echo 0; //Medicos Com CRM cadastrado nao podem ser excluidos!
             endif;
             
         endif;
@@ -36,10 +30,9 @@ if(isset($_POST['deletar'])):
         if(isset($_POST['excluir_esp'])):
             $Eespecialidade->setId_especialidade($_POST['excluir_esp']);
             $Delete->deleteEspecialidades($Eespecialidade);
-            echo'<script type="text/javascript">
-                    alert("Deletado com Sucesso!");
-                    location.href="especialidades.php";    
-                </script>';
+            echo 1; //Deletado com Sucesso!
+        else:
+            echo 0;
         endif;
     endif;
     

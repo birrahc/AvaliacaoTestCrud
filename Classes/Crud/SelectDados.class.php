@@ -26,7 +26,7 @@ class SelectDados {
     }
     
     public function listaEspecialidades(especialidades $Esp){
-        $Termos2 = " where especialidade like '{$Esp->getEspecialidade_nome()}%' "
+        $Termos2 = " where cod like '{$Esp->getId_especialidade()}%' "
                  . "ORDER BY especialidade ";
         $Esp->especialidadeBanco($Termos2, "lista_Especialidades");
     }

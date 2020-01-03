@@ -20,8 +20,8 @@ endif;
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="Classes/css/estilo.css">
-        <link rel="stylesheet" href="Classes/css/sweetalert2.min.css">
+        <link rel="stylesheet" href="css/estilo.css">
+        <link rel="stylesheet" href="css/sweetalert2.min.css">
         <script src="js/jquery-3.4.1.min.js"></script>
         <script src="js/jquery.validate.min.js"></script>
         <script src="js/jquery.mask.min.js"></script>

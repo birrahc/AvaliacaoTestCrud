@@ -1,6 +1,21 @@
 
-$.validator.setDefaults({
-    submitHandler: function(){
+function init() {
+    
+    $("#carregando").hide();
+    $("#corpo").show();
+    
+    jQuery(function($){
+        $("#nome").addClass("captalize"); 
+        $('#cpf').mask('000.000.000-00', {reverse: true});
+        $("#nascimento").mask('00/00/0000',{placeholder: "Data de Nascimento"});
+        $("#telefone").mask("(00) 0000-00-00", {placeholder: "Telefone"});
+        $("#whatswap").mask("(00) 99999-99-99", {placeholder: "Whatswap"});
+        $("#salario").mask('000.000.000.000.000,00', {reverse: true});
+    });
+                
+    $(".formulario").validate({
+        
+        submitHandler: function(){
             var dados = $(".formulario").serialize();
              $.ajax({
                 type: 'POST',
@@ -19,7 +34,7 @@ $.validator.setDefaults({
                                 icon: 'success',
                                 title: 'Dados Cadastrados com Sucesso!',
                                 showConfirmButton: false,
-                                timer: 4000
+                                timer: 47000
                             });
                         
                         },3000);
@@ -42,44 +57,218 @@ $.validator.setDefaults({
             });
              
             return false;
-       
         
-    }
-});
-function init() {
-                $("#carregando").hide();
-                $("#corpo").show();
-                jQuery(function($){
-                    $("#nome").addClass("captalize"); 
-                    $('#cpf').mask('000.000.000-00', {reverse: true});
-                    $("#nascimento").mask('00/00/0000',{placeholder: "Data de Nascimento"});
-                    $("#telefone").mask("(00) 0000-00-00", {placeholder: "Telefone"});
-                    $("#whatswap").mask("(00) 99999-99-99", {placeholder: "Whatswap"});
-                    $("#salario").mask('000.000.000.000.000,00', {reverse: true});
+        },
+        rules: {
+            nome: { required: true, minlength:9 },
+            cpf: { required: true, verificaCPF: true },
+            crm:{verificaCrm:true},
+            nascimento: { required: true, verificaIdade: true,},
+            email:{ email: true, verificaEmail: true},
+            especialidade_medico:{required: true},
+            salario:{required: true}
+        },
+
+        messages: {
+            nome: { required: "Campo Nome Obrigatório ", minlength:"O Campo Nome deve ter no minimo 9 caractres" },
+            cpf: { required: "Campo CPF Obrigatório" },
+            nascimento: { required: "Campo Nascimento Obrigatório" },
+            email:{ email: "por favor preencha um email válido!"},
+            especialidade_medico:{required:" Preencha o campo Especialidade"},
+            salario:{ required: "Por favor preencha o campo Salario"}
+        },
+                    
+    });
+                
+    //validando Especialidades
+    $("#formEsp").validate({
+        
+        submitHandler: function(){
+            var dados = $("#formEsp").serialize();
+             $.ajax({
+                type: 'POST',
+                url: 'dadoEspecialidades.php',
+                async: false,
+                data: dados,
+                success: function(response) {
+                    $("#carregando").show();
+                    $("#carregando").fadeOut(4000);
+                     
+                    if(response >=1){
+                       
+                        setTimeout(function(){
+                            Swal.fire({
+                                position: 'top',
+                                icon: 'success',
+                                title: 'Dados Cadastrados com Sucesso!',
+                                showConfirmButton: false,
+                                timer: 47000
+                            });
+                        
+                        },3000);
+                        
+                        setTimeout(function(){
+                            location.href="especialidades.php";
+                        },5000);
+                    }else{
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Erro...',
+                            text: 'Não Foi Possivel Cadastrar!',
+                            footer: '<a href>Why do I have this issue?</a>'
+                          })
+                    }
+                    
+                }
+               
+            });
+             
+            return false;
+        },
+        rules: {
+            especialidade: { required: true, verificaEspecialidade: true, minlength:6}
+        },
+
+        messages: {
+            especialidade: { required: "Campo Nome Obrigatório ", minlength:"O campo deve ter no minimo 6 caracteres" }
+        }
+                    
+    });
+    
+    //Deleta Medico
+    $("#deleteMed").validate({
+        submitHandler: function(){
+            var dados = $("#deleteMed").serialize();
+            var crm =  $("#crm_med").val().valueOf();
+            if(crm){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Médico com CRM Registrado.',
+                    text: 'Não é permitido deletar dados!'
                 });
                 
-                $(".formulario").validate({
-                    rules: {
-                        nome: { required: true, minlength:9 },
-                        cpf: { required: true, verificaCPF: true },
-                        crm:{verificaCrm:true},
-                        nascimento: { required: true, verificaIdade: true,},
-                        email:{ email: true, verificaEmail: true},
-                        especialidade_medico:{required: true},
-                        salario:{required: true}
-                    },
+            }else{
+            
+                Swal.fire({
+                    title: 'Deseja realmente deletar esses dados ?',
+                    //text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sim'
+                    }).then((result) => {
+                        if (result.value) {
+                            $.ajax({
+                                type: 'POST',
+                                url: 'deletaDados.php',
+                                async: false,
+                                data: dados,
+                                success: function(response) {
+                                    $("#carregando").show();
+                                    $("#carregando").fadeOut(4000);
+                                    if(response >=1){
 
-                    messages: {
-                        nome: { required: "Campo Nome Obrigatório ", minlength:"O Campo Nome deve ter no minimo 9 caractres" },
-                        cpf: { required: "Campo CPF Obrigatório" },
-                        nascimento: { required: "Campo Nascimento Obrigatório" },
-                        email:{ email: "por favor preencha um email válido!"},
-                        especialidade_medico:{required:" Preencha o campo Especialidade"},
-                        salario:{ required: "Por favor preencha o campo Salario"}
-                    },
-                    
-                });
+                                        setTimeout(function(){
+                                            Swal.fire({
+                                                position: 'top',
+                                                icon: 'success',
+                                                title: 'Dados deletados com Sucesso!',
+                                                showConfirmButton: false,
+                                                timer: 47000
+                                            });
+
+                                        },3000);
+
+                                        setTimeout(function(){
+                                            location.href="index.php";
+                                        },5000);
+                                    }else{
+                                        setTimeout(function(){
+                                            Swal.fire({
+                                            icon: 'error',
+                                            title: 'Não foi possivel delatar dados.'
+                                            });
+
+                                        },3000);
+
+                                    }
+
+                                }
+
+                            });
+                        }
+                    });
+
+
+                return false;
+            
             }
+        }
+    });
+    
+    //Deleta Especialidade
+    $("#espDel").validate({
+        submitHandler: function(){
+            var dados = $("#espDel").serialize();
+                Swal.fire({
+                    title: 'Deseja realmente deletar esses dados ?',
+                    //text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sim'
+                    }).then((result) => {
+                        if (result.value) {
+                            $.ajax({
+                                type: 'POST',
+                                url: 'deletaDados.php',
+                                async: false,
+                                data: dados,
+                                success: function(response) {
+                                    $("#carregando").show();
+                                    $("#carregando").fadeOut(4000);
+                                    if(response >=1){
+
+                                        setTimeout(function(){
+                                            Swal.fire({
+                                                position: 'top',
+                                                icon: 'success',
+                                                title: 'Dados deletados com Sucesso!',
+                                                showConfirmButton: false,
+                                                timer: 47000
+                                            });
+
+                                        },3000);
+
+                                        setTimeout(function(){
+                                            location.href="especialidades.php";
+                                        },5000);
+                                    }else{
+                                        setTimeout(function(){
+                                            Swal.fire({
+                                            icon: 'error',
+                                            title: 'Médico com esta especialidade.',
+                                            text: 'Não é permitido deletar estes dados pois existe medico com este cadastro!'
+                                            });
+
+                                        },3000);
+
+                                    }
+
+                                }
+
+                            });
+                        }
+                    });
+
+
+                return false;
+        }
+    });
+
+}
 
             
 
@@ -180,5 +369,26 @@ function init() {
                 return true;
                 
             }, "crm já cadastrado!");
+            
+            
+jQuery.validator.addMethod("verificaEspecialidade", function (value, element) {
+               especialidade = value;
+                
+                var verificaEsp=false;
+                
+                jQuery.ajax({
+                            url: 'checkDados.php?especialidade='+especialidade,
+                            async: false,
+                            success: function(data) {
+                                //alert(data);
+                               if(data == 0) verificaEsp = true; 
+                           }});
+			
+                if(!verificaEsp) return false;
+                       
+                          
+                return true;
+                
+            }, "Especialidade já cadastrada!");
                 
             $(document).ready(init);
