@@ -57,7 +57,7 @@ endif;
                             <label for="nascimento" generated="true" class="error"></label>
                             <input type="text" name="nascimento" id="nascimento" value="<?php echo  date("d/m/Y", strtotime($Medico->getNascimento()))?>">
                             <input type="text" name="telefone" id="telefone" placeholder="Telefone" value="<?php echo $Medico->getTelefone() ?>">
-                            <input type="text" name="watshapp" id="whatswap" placeholder="Watshapp" value="<?php echo $Medico->getWhatswapp() ?>">
+                            <input type="text" name="watshapp" id="whatswap" placeholder="WhatsApp" value="<?php echo $Medico->getWhatswapp() ?>">
                             <label for="salario" generated="true" class="error"></label>
                             <input type="text" name="salario" id="salario" placeholder="Salário" value="<?php echo $Medico->getMedia_salarial() ?>">
                             <label for="especialidade_medico" generated="true" class="error"></label>

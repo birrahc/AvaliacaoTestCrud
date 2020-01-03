@@ -9,10 +9,12 @@ function init() {
         $('#cpf').mask('000.000.000-00', {reverse: true});
         $("#nascimento").mask('00/00/0000',{placeholder: "Data de Nascimento"});
         $("#telefone").mask("(00) 0000-00-00", {placeholder: "Telefone"});
-        $("#whatswap").mask("(00) 99999-99-99", {placeholder: "Whatswap"});
+        $("#whatswap").mask("(00) 99999-99-99", {placeholder: "WhatsApp"});
         $("#salario").mask('000.000.000.000.000,00', {reverse: true});
     });
-                
+    //=========================++++++=============================
+    //====== Validando Formulario de cadastro de Médico ==========
+    //============================================================
     $(".formulario").validate({
         
         submitHandler: function(){
@@ -79,8 +81,9 @@ function init() {
         },
                     
     });
-                
-    //validando Especialidades
+     //================== +++++ ======================           
+    //======= validando cadastro Especialidades ======
+    //=================== +++++ ======================
     $("#formEsp").validate({
         
         submitHandler: function(){
